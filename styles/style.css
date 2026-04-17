@@ -83,31 +83,31 @@
   border-bottom: var(--border-main);
 }
 
-.card__img-cold {
+.card__img_hue-rotate {
   filter: invert(20%) sepia(100%) saturate(400%) hue-rotate(180deg) brightness(1.2);
 }
 
-.card__img_film-vintage {
+.card__img_sepia {
   filter: sepia(80%) blur(0.5px) contrast(120%) brightness(0.9);
 }
 
-.card__img-polar {
+.card__img_sepia-soft {
   filter: sepia(60%) saturate(50%) brightness(1.1) contrast(110%) hue-rotate(-15deg);
 }
 
-.card__img-punk {
+.card__img_hue {
   filter: hue-rotate(280deg) saturate(300%) contrast(150%) brightness(0.9);
 }
 
-.card__img-hyper {
+.card__img_saturate {
   filter: saturate(300%) blur(0.5px);
 }
 
-.card__img-ghost {
+.card__img_grayscale {
   filter: brightness(1.8) contrast(50%) grayscale(100%) sepia(50%) hue-rotate(70deg) blur(0.8px);
 }
 
-.card__img-flash {
+.card__img_brightness {
   filter: saturate(100%) brightness(1.4);
 }
 
@@ -253,9 +253,13 @@
   width: 293px;
   min-height: 38px;
   border: var(--border-main);
-  padding: 9px 17px;
+  padding: 9px 17px 6px;
   color: var(--main-color-text, #000);
   background-color: var(--main-color-bg, #fff);
+}
+
+.modal__button .button__text {
+  text-transform: uppercase;
 }
 
 .button:focus-visible {
