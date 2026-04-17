@@ -11,6 +11,421 @@
 */
 
 .page {
+  font-family: var(--font-family-main), "Inter", sans-serif;
+  background-color: #313131;
+  background-image: var(--main-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: "wght" var(--font-weight-normal);
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  inline-size: var(--container-width), 700px;
+}
+
+.header {
+  margin: 100px auto 98px;
+  border: var(--border-main);
+  padding: 130px 16px;
+  background-color: var(--main-color-bg, #fff);
+}
+
+.header__title {
+  font-family: var(--font-family-accent), monospace;
+  font-weight: 400;
+  font-size: var(--title-size);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.header__subtitle {
+  display: block;
+  margin-top: 16px;
+  font-size: var(--subtitle-size);
+}
+
+.container__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 49px;
+  margin-bottom: 100px;
+}
+
+.card {
+  border: var(--border-main);
+  background-color: var(--main-color-bg, #fff);
+}
+
+.card__title {
+  padding: 5px 10px 4px;
+  color: var(--main-color-text, #000);
+  font-family: var(--font-family-main), "Inter", sans-serif;
+  font-weight: var(--font-weight-main-bold);
+  font-size: var(--paragraph-size);
+}
+
+.card__image-container {
+  position: relative;
+  max-height: 696px;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  border-top: var(--border-main);
+  border-bottom: var(--border-main);
+}
+
+.card__img-cold {
+  filter: invert(20%) sepia(100%) saturate(400%) hue-rotate(180deg) brightness(1.2);
+}
+
+.card__img-film {
+  filter: sepia(80%) blur(0.5px) contrast(120%) brightness(0.9);
+}
+
+.card__img-polar {
+  filter: sepia(60%) saturate(50%) brightness(1.1) contrast(110%) hue-rotate(-15deg);
+}
+
+.card__img-punk {
+  filter: hue-rotate(280deg) saturate(300%) contrast(150%) brightness(0.9);
+}
+
+.card__img-satur {
+  filter: saturate(300%) blur(0.5px);
+}
+
+.card__img-vision {
+  filter: brightness(1.8) contrast(50%) grayscale(100%) sepia(50%) hue-rotate(70deg) blur(0.8px);
+}
+
+.card__img-flash {
+  filter: saturate(100%) brightness(1.4);
+}
+
+.card__lable {
+  position: absolute;
+  top: 29px;
+  right: 25px;
+  z-index: 1;
+  opacity: 0.5;
+  color: var(--main-color-text, #000);
+  font-family: var(--font-family-accent), monospace;
+  font-weight: var(--font-weight-main-normal);
+  font-size: 14px;
+  text-transform: uppercase;
+  text-shadow:
+    1px 0 0 var(--stroke-color),
+    -1px 0 0 var(--stroke-color),
+    0 1px 0 var(--stroke-color),
+    0 -1px 0 var(--stroke-color),
+    1px 1px 0 var(--stroke-color),
+    -1px -1px 0 var(--stroke-color),
+    1px -1px 0 var(--stroke-color),
+    -1px 1px 0 var(--stroke-color);
+  mix-blend-mode: hard-light;
+}
+
+@supports (text-stroke: 2px var(--stroke-color)) or (-webkit-text-stroke: 2px var(--stroke-color)) {
+  .stroked-text {
+    text-shadow: none;
+    text-stroke: 2px var(--stroke-color);
+    -webkit-text-stroke: 2px var(--stroke-color);
+  }
+}
+
+.card__content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 30px 25px 25px;
+}
+
+.card-text {
+  color: var(--main-color-text, #000);
+  font-family: var(--font-family-main), "Inter", sans-serif;
+  font-weight: var(--font-weight-main-normal);
+  font-size: var(--paragraph-size);
+  line-height: 1.17;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  border: none;
+  box-shadow: 0px 0px 0px 0px var(--main-color-text, #000);
+  overflow: hidden;
+  background-color: transparent;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.button:not(.like__button):hover::before {
+  transform: translateX(0px);
+}
+
+.button:not(.like__button)::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color-text, #000);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  transform-origin: left center;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--main-color-text, #000);
+  outline: none;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 7px;
+}
+
+.card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 36px;
+  padding: 0;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--main-color-text, #000);
+}
+
+.button__text {
+  position: relative;
+  z-index: 2;
+  color: var(--main-color-bg, #fff);
+  font-family: var(--font-family-accent), monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 0.9;
+  mix-blend-mode: difference;
+}
+
+.card__button {
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 130px;
+  min-height: 38px;
+  border: var(--border-main);
+  padding: 0;
+  background-color: var(--main-color-bg, #fff);
+}
+
+.save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: clamp(306px, 30vw, 335px);
+  min-height: 55px;
+  margin: 0 auto;
+  border: var(--border-main);
+  padding: 0;
+  background-color: var(--main-color-bg, #fff);
+}
+
+.modal__button {
+  width: 293px;
+  min-height: 38px;
+  border: var(--border-main);
+  padding: 9px 17px;
+  color: var(--main-color-text, #000);
+  background-color: var(--main-color-bg, #fff);
+}
+
+.save-button:focus-visible,
+.modal__button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--main-color-text, #000);
+  outline: none;
+}
+
+.save-button__icon use {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.save-button__icon {
+  width: 21px;
+  height: 21px;
+  fill: var(--main-color-bg, #fff);
+  mix-blend-mode: difference;
+}
+
+.modal {
+  display: none;
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 353px;
+  border: none;
+  padding: 30px;
+  box-shadow: var(--border-inside);
+  overflow-x: hidden;
+}
+
+.modal[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal__icon use {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.modal__icon {
+  display: block;
+  width: 39px;
+  height: 39px;
+  fill: var(--main-color-bg, #fff);
+  mix-blend-mode: difference;
+}
+
+.modal__title {
+  max-width: 228px;
+  color: var(--main-color-text, #000);
+  font-family: var(--font-family-accent), monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.like-icon {
+  transform-origin: center;
+}
+
+.contour {
+  fill: var(--heart-contour, #000);
+  transition: fill 0.1s linear 0s;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon:hover .core {
+  fill: var(--heart-contour, #000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--heart-contour, #000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+@media (width <= 768px) {
+  .header {
+    padding: 122px 16px;
+  }
+
+  .header__subtitle {
+    margin-top: 18px;
+  }
+
+  .card__content-container {
+    padding: 22px 25px 25px;
+  }
+
+  .save-button {
+    flex-direction: column;
+    gap: 10px;
+    min-height: 84px;
+  }
+
+  .save-button__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal[open] {
+    width: 341px;
+  }
+
+  .modal__button {
+    max-width: 261px;
+  }
+
+  .modal__title {
+    max-width: 202px;
+  }
+}
+
+@media (width <= 374px) {
+  .header__title {
+    font-size: 30px;
+  }
 }
